@@ -1,0 +1,4 @@
+# Connect to your tenant 
+Connect-PnPOnline -Url https://acteurope.sharepoint.com -Credentials macsta@statoilfuelretail.com
+# New site - please select template from template using Get-PnPWebTemplates
+New-PnPTenantSite -Title "ECE" -Url "https://acteurope.sharepoint.com/sites/CKE-EU-BD-ECE-01"  -TimeZone 4 -Template "SITEPAGEPUBLISHING#0" -Lcid 1033 -Description "We need an Office 365 group for ECE to be able to structure meetings, documents and decisions going forward. - Choose 'Private' to ensure only group members can see what's inside - Select Subscribe, to make sure members get group conversations and calendar" -Owner "HANUN@statoilfuelretail.com" -Wait
