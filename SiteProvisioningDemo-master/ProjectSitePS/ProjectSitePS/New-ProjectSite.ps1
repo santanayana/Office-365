@@ -221,7 +221,8 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	Enable-PnPfeature -Identity b5934f65-a844-4e67-82e5-92f66aafe912 -scope site -force
 	Enable-PnPfeature -Identity e0a9f213-54f5-4a5a-81d5-f5f3dbe48977 -scope site -force
 	Enable-PnPfeature -Identity da2e115b-07e4-49d9-bb2c-35e93bb9fca9 -scope site -force
-	Enable-PnPfeature -Identity b50e3104-6812-424f-a011-cc90e6327318 -scope site -force
+    Enable-PnPfeature -Identity b50e3104-6812-424f-a011-cc90e6327318 -scope site -force
+    Enable-PnPfeature -Identity 6c09612b-46af-4b2f-8dfc-59185c962a29 -Scope Site -Force
 																
 	Enable-PnPfeature -Identity a7a2793e-67cd-4dc1-9fd0-43f61581207a -scope web
 	Enable-PnPfeature -Identity 7201d6a4-a5d3-49a1-8c19-19c4bac6e668 -scope web
@@ -240,7 +241,8 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	Write-Verbose "2.3 - Add template and breadcrumbsolution"
 	
 	Install-PnPSolution -PackageId 25251922-d03e-4a78-8de4-25beb5d317e9 -SourceFilePath $folder\Migrationtemplate.wsp
-	Install-PnPSolution -PackageId 571e2000-6838-4e1b-8eb8-2558256b0f9a -SourceFilePath $folder\SharePointBreadCrumb.wsp
+    Install-PnPSolution -PackageId 571e2000-6838-4e1b-8eb8-2558256b0f9a -SourceFilePath $folder\SharePointBreadCrumb.wsp
+    Install-PnPSolution -PackageId 12100c1c-ab50-488b-8934-f19e776ad888 -SourceFilePath $folder\MeetingWorkTempl.wsp
 	Write-Host "Uploading for template and bredcrumb nawigation solution - done"
 	
     Write-Verbose "2.3 - Creating lists"
