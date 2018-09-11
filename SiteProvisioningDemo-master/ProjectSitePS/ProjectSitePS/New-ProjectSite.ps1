@@ -27,7 +27,7 @@ Param(
 )
 
 Push-Location $folder
-$Credential = Import-CliXml -Path "${env:\userprofile}\macsta.Cred"
+$Credential =  Import-Clixml "C:\Users\macsta\Documents\PowerShell\statoil2.xml"
 $settings = .\Get-Settings.ps1
 $VerbosePreference = "continue"
 $serverRelativeUrl = $url.Substring($url.IndexOf('/',8))    # Skip 8 characters for "https://"
@@ -187,12 +187,12 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	$ctx.Load($RegionalSettings)
 	Invoke-PnPQuery
 
-	Write-Host " RegionalSettings before change" $web.RegionalSettings.LocaleId 
+	Write-Host " RegionalSettings before change: " $web.RegionalSettings.LocaleId 
 	$web.RegionalSettings.LocaleId = 2057;
-	Write-Host "New Regional Settings " $web.RegionalSettings.LocaleId
-	Write-Host "Current time format" $RegionalSettings.Time24 
+	Write-Host "RegionalSettings after change: " $web.RegionalSettings.LocaleId
+	Write-Host "Current time format is 24?" $RegionalSettings.Time24 
 	$web.RegionalSettings.Time24 =$true
-	Write-Host "New time format" $RegionalSettings.Time24 
+	Write-Host "New time format is 24?" $RegionalSettings.Time24 
 	$web.RegionalSettings.FirstDayOfWeek = 1
 	$web.Update();
 	Invoke-PnPQuery
@@ -284,9 +284,9 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
     #Add-ListViewWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "AnnouncementsWPOrginal.xml" -listName "Announcements" -isLibrary $False -column 1 -row 2
     #Add-ColumnToListView -listName "Announcements" -fieldName "Urgent"
     #Add-ListViewWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "CalendarWP.xml" -listName "Calendar" -isLibrary $False -column 1 -row 2
-	Add-ListViewWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "LinksWP.xml" -listName "Links" -isLibrary $False -column 1 -row 2
+	#Add-ListViewWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "LinksWP.xml" -listName "Links" -isLibrary $False -column 1 -row 2
 	Add-ScriptedWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "MetadataWP.xml" -scriptSite $settings.ScriptSiteUrl -column 2 -row 2
-	Add-ScriptedWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "WeatherWP.xml" -scriptSite $settings.ScriptSiteUrl -column 2 -row 2
+	#Add-ScriptedWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "WeatherWP.xml" -scriptSite $settings.ScriptSiteUrl -column 2 -row 2
 	Add-ScriptedWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "Siteusers.xml" -scriptSite -listName "SiteUsers" -isLibrary $False -column 2 -row 2
     #Add-ListViewWebPart -serverRelativePageUrl $serverRelativeHomePageUrl -webPartName "DocumentsWPOrginal.xml" -listName "Documents Library" -isLibrary $True -column 1 -row 1
 	#Add-ColumnToListView -listName "Documents%20Library" -fieldName "Created"
