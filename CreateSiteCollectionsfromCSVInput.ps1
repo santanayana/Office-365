@@ -1,0 +1,2 @@
+ $sites = (import-csv -Path C:\Users\macsta\Documents\SitestoCreate.csv -Delimiter ";" -Encoding UTF8).where{!$_.Created}
+ $sites | % {C:\Users\macsta\Documents\Git\Office-365\SiteProvisioningDemo-master\ProjectSitePS\ProjectSitePS\New-ProjectSite.ps1 -Title $_.title -Url $_.dscURL -Folder $_.Folder -LogFile $_.logifile -Description $_.Description -SiteOwner1 $_.Sowner1 -SiteOwner2 $_.Sowner2 }

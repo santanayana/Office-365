@@ -223,6 +223,9 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	Enable-PnPfeature -Identity da2e115b-07e4-49d9-bb2c-35e93bb9fca9 -scope site -force
     Enable-PnPfeature -Identity b50e3104-6812-424f-a011-cc90e6327318 -scope site -force
     Enable-PnPfeature -Identity 6c09612b-46af-4b2f-8dfc-59185c962a29 -Scope Site -Force
+    Enable-PnPfeature -Identity 02464c6a-9d07-4f30-ba04-e9035cf54392 -Scope Site -Force
+    Enable-PnPfeature -Identity c845ed8d-9ce5-448c-bd3e-ea71350ce45b -Scope Site -Force
+    Enable-PnPfeature -Identity a44d2aa3-affc-4d58-8db4-f4a3af053188 -Scope Site -Force
 																
 	Enable-PnPfeature -Identity a7a2793e-67cd-4dc1-9fd0-43f61581207a -scope web
 	Enable-PnPfeature -Identity 7201d6a4-a5d3-49a1-8c19-19c4bac6e668 -scope web
