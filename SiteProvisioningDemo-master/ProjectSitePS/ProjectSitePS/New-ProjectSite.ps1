@@ -199,7 +199,12 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	
 	Write-Verbose "2.2.2 - Trying to Enable desired features"
 	Write-Host "Enabling features on SharePoint site "
-	
+    
+    
+############################################################################
+# Enabling all required features on newly created site collection
+############################################################################
+
 	$ctx = Get-PnPContext
 	Enable-PnPfeature -Identity 063c26fa-3ccc-4180-8a84-b6f98e991df3 -scope site -force
 	Enable-PnPfeature -Identity 8581a8a7-cf16-4770-ac54-260265ddb0b2 -scope site -force
@@ -246,6 +251,7 @@ if ((Get-PnPWeb).Url.ToLower() -ne $url.ToLower()) {
 	Install-PnPSolution -PackageId 25251922-d03e-4a78-8de4-25beb5d317e9 -SourceFilePath $folder\Migrationtemplate.wsp
     Install-PnPSolution -PackageId 571e2000-6838-4e1b-8eb8-2558256b0f9a -SourceFilePath $folder\SharePointBreadCrumb.wsp
     Install-PnPSolution -PackageId 12100c1c-ab50-488b-8934-f19e776ad888 -SourceFilePath $folder\MeetingWorkTempl.wsp
+    Install-PnPSolution  PackageId 5d773141-2e17-47d8-b067-2e05f4405944 -SourceFilePath $folder\Migrationtemplatev3.wsp
 	Write-Host "Uploading for template and bredcrumb nawigation solution - done"
 	
     Write-Verbose "2.3 - Creating lists"
